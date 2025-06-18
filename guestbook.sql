@@ -21,10 +21,7 @@ content 				text not null,
 reg_date datetime default current_timestamp
 );
 
-alter table guestbook
-add column guest_id 
-int auto_increment primary key first
-;
+
 
 -- 방명록 데이터 삽입
 insert into guestbook 
