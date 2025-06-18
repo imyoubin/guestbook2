@@ -25,12 +25,12 @@ public class Guestbookcontroller extends HttpServlet {
             System.out.println("리스트 요청");
             List<GuestbookVO> guestbookList = guestbookDAO.guestbookSelect();
             request.setAttribute("gList", guestbookList);
-            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/guestbook/list.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/guestbook/list.jsp");
             rd.forward(request, response);
 
         } else if ("wform".equals(action)) {
             System.out.println("등록폼 요청");
-            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/guestbook/writeForm.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/writeForm.jsp");
             rd.forward(request, response);
 
         } else if ("write".equals(action)) {
@@ -56,9 +56,9 @@ public class Guestbookcontroller extends HttpServlet {
         } else if ("updateForm".equals(action)) {
             System.out.println("수정폼");
             int no = Integer.parseInt(request.getParameter("no"));
-            GuestbookVO guestbook = guestbookDAO.personSelectOne(no);
+            GuestbookVO guestbook =  guestbookDAO.personSelectOne(no); 
             request.setAttribute("guestbookVO", guestbook);
-            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/guestbook/updateForm.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/updateForm.jsp");
             rd.forward(request, response);
 
         } else if ("update".equals(action)) {
@@ -69,7 +69,7 @@ public class Guestbookcontroller extends HttpServlet {
             String content = request.getParameter("content");
 
             GuestbookVO guestbookVO = new GuestbookVO(no, name, password, content, null);
-            guestbookDAO.update(guestbookVO);
+            guestbookDAO.update(guestbookVO); // update() 메서드 직접 DAO에 구현 필요
             response.sendRedirect("guestbook?action=list");
         }
     }
@@ -77,4 +77,4 @@ public class Guestbookcontroller extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
-}
+} 

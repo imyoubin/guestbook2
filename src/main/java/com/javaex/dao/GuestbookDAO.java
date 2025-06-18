@@ -118,12 +118,12 @@ public class GuestbookDAO {
         GuestbookVO vo = null;
         connect();
         try {
-        	String query = "";
-        	query += " UPDATE guestbook ";
-        	query += " SET name = ?, ";
-        	query += "     password = ?, ";
-        	query += "     content = ? ";
-        	query += " WHERE guest_id = ? ";
+           String query = "";
+           query += " UPDATE guestbook ";
+           query += " SET name = ?, ";
+           query += "     password = ?, ";
+           query += "     content = ? ";
+           query += " WHERE guest_id = ? ";
 
             pstmt = conn.prepareStatement(query);
             pstmt.setInt(1, no);
@@ -152,12 +152,12 @@ public class GuestbookDAO {
         int count = 0;
         this.connect();
         try {
-        	String query = "";
-        	query += " UPDATE guestbook ";
-        	query += " SET name = ?, ";
-        	query += "     password = ?, ";
-        	query += "     content = ? ";
-        	query += " WHERE guest_id = ? ";
+           String query = "";
+           query += " UPDATE guestbook ";
+           query += " SET name = ?, ";
+           query += "     password = ?, ";
+           query += "     content = ? ";
+           query += " WHERE guest_id = ? ";
             pstmt = conn.prepareStatement(query);
             pstmt.setString(1, vo.getName());
             pstmt.setString(2, vo.getPassword());
@@ -171,9 +171,9 @@ public class GuestbookDAO {
         return count;
     }
 
-	
+   
     public GuestbookVO personSelectOne(int no) {
-    	
+       
         GuestbookVO vo = null;
         this.connect();
 
