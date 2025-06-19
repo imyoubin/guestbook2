@@ -45,13 +45,13 @@ public class Guestbookcontroller extends HttpServlet {
             guestbookVO.setContent(content);
 
             guestbookDAO.insert(guestbookVO);
-            response.sendRedirect("guestbook?action=list");
+            response.sendRedirect("http://localhost:8080/guestbook2/guestbook?action=list");
 
         } else if ("delete".equals(action)) {
             System.out.println("삭제");
             int no = Integer.parseInt(request.getParameter("no"));
             guestbookDAO.delete(no);
-            response.sendRedirect("guestbook?action=list");
+            response.sendRedirect("http://localhost:8080/guestbook2/guestbook?action=list");
 
         } else if ("updateForm".equals(action)) {
             System.out.println("수정폼");
@@ -69,8 +69,8 @@ public class Guestbookcontroller extends HttpServlet {
             String content = request.getParameter("content");
 
             GuestbookVO guestbookVO = new GuestbookVO(no, name, password, content, null);
-            guestbookDAO.update(guestbookVO); // update() 메서드 직접 DAO에 구현 필요
-            response.sendRedirect("guestbook?action=list");
+            guestbookDAO.update(guestbookVO); 
+            response.sendRedirect("http://localhost:8080/guestbook2/guestbook?action=list");
         }
     }
 
