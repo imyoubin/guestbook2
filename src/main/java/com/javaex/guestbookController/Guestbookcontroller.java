@@ -17,7 +17,7 @@ public class Guestbookcontroller extends HttpServlet {
         
         System.out.println("Guestbookcontroller");
         String action = request.getParameter("action");
-        System.out.println("action: " + action);
+        System.out.println(action);
 
         GuestbookDAO guestbookDAO = new GuestbookDAO();
 
